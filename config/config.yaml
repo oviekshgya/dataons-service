@@ -1,0 +1,17 @@
+server:
+  appName: "dataons-service"
+  port: "9001"
+  secret: "ASDasd324"
+  mode: "release"
+  env: "dev"
+
+databaseMysql:
+  Dbname: "dataons_service"
+  host: "localhost"
+  port: "3306"
+  username: "root"
+  password: ""
+  driver: "mysql"
+  max_lifetime: 7200
+  max_open_conns: 150
+  max_idle_conns: 50
