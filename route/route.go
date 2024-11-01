@@ -20,6 +20,7 @@ func Routers(Routers *gin.Engine) {
 	{
 		master.GET("/:idCompany/:idDepart/:idDivision", controllers.UserController.MasterDataCompany)
 		master.GET("/inher", controllers.UserController.MasterCompanyInheritance)
+		master.POST("/company", controllers.UserController.CreateUpdateCompany)
 	}
 
 }

@@ -4,10 +4,12 @@ import (
 	"dataons-service/models"
 	"dataons-service/models/company"
 	"dataons-service/models/queryScopes"
+	"dataons-service/pkg"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"strconv"
+	"time"
 )
 
 type UserRepository struct {
@@ -89,4 +91,51 @@ func (service UserRepository) MasterCompanyInheritance(c *gin.Context) (interfac
 	service.Mysql.Preload("Department").Preload("Department.Division").Preload("Department.Division.Employee").Find(&masterCom)
 
 	return &masterCom, nil
+}
+
+func (service UserRepository) CreateUpdateCompany(input models.JSONCreateUpdate, c *gin.Context) (interface{}, error) {
+
+	if input.IdCompany != 0 {
+		tx := service.Mysql.Begin()
+		if updated := tx.Table(pkg.COMPANY).Where("idCompany = ?", input.IdCompany).Updates(map[string]interface{}{
+			"nameCompany": input.NameCompany,
+			"isActive":    input.IsActive,
+		}); updated.Error != nil {
+			tx.Rollback()
+			return map[string]interface{}{
+				"craeted": false,
+				"updated": false,
+				"errors":  updated.Error,
+			}, nil
+		}
+		tx.Commit()
+		return map[string]interface{}{
+			"craeted": false,
+			"updated": true,
+			"types":   "Company",
+		}, nil
+	}
+
+	tx := service.Mysql.Begin()
+	if craeted := tx.Create(&company.Company{
+		NameCompany: input.NameCompany,
+		IsActive:    1,
+		CreatedAt:   time.Now(),
+		UpdateAt:    time.Now(),
+		Address:     input.Address,
+	}); craeted.Error != nil {
+		tx.Rollback()
+		return map[string]interface{}{
+			"craeted": false,
+			"updated": false,
+			"types":   craeted.Error,
+		}, nil
+	}
+	tx.Commit()
+
+	return map[string]interface{}{
+		"craeted": true,
+		"updated": false,
+		"types":   "Company",
+	}, nil
 }
