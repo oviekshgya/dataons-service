@@ -2,6 +2,10 @@ package config
 
 import (
 	"database/sql"
+	"dataons-service/models/company"
+	"dataons-service/models/department"
+	"dataons-service/models/division"
+	"dataons-service/models/employee"
 	"fmt"
 	grmsql "gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -9,7 +13,65 @@ import (
 )
 
 func MigrateTable(db *gorm.DB) {
-	//db.AutoMigrate(&product.Product{}, &category.Category{})
+	err := db.AutoMigrate(&company.Company{}, &department.Department{}, &division.Division{}, &employee.Employee{})
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+
+	var datacompany = []company.Company{
+		{NameCompany: "PT Indodev Niaga Internet", IsActive: 1, Address: "Jl. Tegal Rotan Raya No.78, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15413"},
+	}
+
+	if err := db.FirstOrCreate(&datacompany).Error; err != nil {
+		log.Fatal("Gagal mengisi compay awal:", err)
+	}
+
+	var dataDepart = []department.Department{}
+	if len(datacompany) > 0 {
+		for i := 0; i < len(datacompany); i++ {
+			dataDepart = []department.Department{
+				{IdCompany: datacompany[i].IdCompany, NameDepartment: "Board Of Directors", IsActive: 1},
+				{IdCompany: datacompany[i].IdCompany, NameDepartment: "Information Technology", IsActive: 1},
+			}
+		}
+	}
+
+	if err := db.FirstOrCreate(&dataDepart).Error; err != nil {
+		log.Fatal("Gagal mengisi department awal:", err)
+	}
+
+	var datadivision = []division.Division{}
+	if len(dataDepart) > 0 {
+		for i := 0; i < len(dataDepart); i++ {
+			datadivision = []division.Division{
+				{IdDepartment: dataDepart[i].IdDepartment, NameDivision: "ERP Development", IsActive: 1},
+				{IdDepartment: dataDepart[i].IdDepartment, NameDivision: "Tech Development", IsActive: 1},
+				{IdDepartment: dataDepart[i].IdDepartment, NameDivision: "Software Maintenance", IsActive: 1},
+				{IdDepartment: dataDepart[i].IdDepartment, NameDivision: "Quality Assurance", IsActive: 1},
+			}
+		}
+	}
+
+	if err := db.FirstOrCreate(&datadivision).Error; err != nil {
+		log.Fatal("Gagal mengisi data division awal:", err)
+	}
+
+	var dataemployee = []employee.Employee{}
+
+	if len(datadivision) > 0 {
+		for i := 0; i < len(datadivision); i++ {
+			dataemployee = []employee.Employee{
+				{IdDivision: datadivision[i].IdDivision, NameEmployee: "OVIEK SHAGYA GHINULUR", NPK: "2021.001", IsActive: 1},
+			}
+		}
+	}
+
+	if err := db.FirstOrCreate(&dataemployee).Error; err != nil {
+		log.Fatal("Gagal mengisi data employee awal:", err)
+	}
+
+	fmt.Println("Data awal berhasil ditambahkan.")
 
 }
 

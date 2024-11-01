@@ -24,3 +24,10 @@ const (
 	PRODUCT  = "product"
 	CATEGORY = "category"
 )
+
+const (
+	DEPARTEMEN = "department"
+	COMPANY    = "company"
+	DIVISION   = "division"
+	Employee   = "employee"
+)
