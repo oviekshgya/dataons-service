@@ -23,5 +23,16 @@ func Routers(Routers *gin.Engine) {
 		master.POST("/company", controllers.UserController.CreateUpdateCompany)
 		master.DELETE("/company", controllers.UserController.DeleteCompany)
 	}
+	user := Routers.Group("/generate")
+	user.Use(middleware.AuthBasic(), middleware.AuthHeader())
+	{
+		user.GET("/accessCode", controllers.UserController.GenerateCodeAccess)
+	}
+
+	acc := Routers.Group("/acc")
+	acc.Use(middleware.AuthBasic(), middleware.AuthHeader(), middleware.AuthAccess())
+	{
+		acc.GET("/inher", controllers.UserController.MasterCompanyInheritance)
+	}
 
 }

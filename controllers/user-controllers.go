@@ -72,3 +72,15 @@ func (u *userController) DeleteCompany(c *gin.Context) {
 	app.Response(http.StatusOK, "Succes", "", result)
 	return
 }
+
+func (controller userController) GenerateCodeAccess(c *gin.Context) {
+	app := response.Gin{C: c}
+	result, err := repositories.StaticUserRepo(c).GenerateCodeAccess()
+	if err != nil {
+		app.Response(http.StatusBadRequest, "", "cannot generate access", nil)
+		return
+	}
+
+	app.Response(http.StatusOK, "Succes", "", result)
+	return
+}

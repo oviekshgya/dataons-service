@@ -151,3 +151,12 @@ func (service UserRepository) DeleteCompany(id int, c *gin.Context) (interface{}
 		"types":  "Company",
 	}, nil
 }
+
+func (service UserRepository) GenerateCodeAccess() (interface{}, error) {
+	redisCon := pkg.InitializeRedis()
+	key := fmt.Sprintf("%s%d%02d%02d%02d%02d%02d", pkg.UuidString(), time.Now().Year(), time.Now().Month(), time.Now().Day(), time.Now().Hour(), time.Now().Minute(), time.Now().Second())
+	if errRedis := redisCon.SetKey(key, &pkg.GenerateAccess{Time: time.Now()}, time.Duration(10*time.Minute)); errRedis != nil {
+		return nil, fmt.Errorf("set redis error:%s", errRedis.Error())
+	}
+	return key, nil
+}
