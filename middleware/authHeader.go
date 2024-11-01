@@ -57,3 +57,19 @@ func AuthAccess() gin.HandlerFunc {
 
 	}
 }
+
+func AuthBasic() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		appG := response.Gin{C: c}
+		user, password, hasAuth := c.Request.BasicAuth()
+		if hasAuth && user == pkg.USERNAME && password == pkg.PASSWORD {
+			//fmt.Println("NEXT BASIC AUTH")
+			c.Next()
+		} else {
+			appG.Response(http.StatusBadRequest, "", "Basic Auth Failed", nil)
+			c.Abort()
+			return
+		}
+
+	}
+}
