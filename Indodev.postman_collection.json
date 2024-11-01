@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "94810016-95de-43ef-a52c-84134a7251f1",
+		"name": "Indodev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14085369",
+		"_collection_link": "https://danainfede.postman.co/workspace/d2fd1646-f366-42e5-8266-734aff6163b8/collection/14085369-94810016-95de-43ef-a52c-84134a7251f1?action=share&source=collection_link&creator=14085369"
+	},
+	"item": [
+		{
+			"name": "Pagination Company",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9001/master?page=1&pageSize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"master"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9001/master?page=1&pageSize",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9001",
+							"path": [
+								"master"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "14b9505c-4241-4e9c-820f-5eb8b10f1eb0"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:02:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "646"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:02:21.2261622+07:00\",\n    \"data\": {\n        \"data\": [\n            {\n                \"name_company\": \"PT Indodev Niaga Internet\",\n                \"name_department\": \"Information Technology\",\n                \"name_division\": \"ERP Development\"\n            },\n            {\n                \"name_company\": \"PT Indodev Niaga Internet\",\n                \"name_department\": \"Information Technology\",\n                \"name_division\": \"Tech Development\"\n            },\n            {\n                \"name_company\": \"PT Indodev Niaga Internet\",\n                \"name_department\": \"Information Technology\",\n                \"name_division\": \"Software Maintenance\"\n            },\n            {\n                \"name_company\": \"PT Indodev Niaga Internet\",\n                \"name_department\": \"Information Technology\",\n                \"name_division\": \"Quality Assurance\"\n            }\n        ],\n        \"totalData\": 4,\n        \"page\": 1,\n        \"pageSize\": 10,\n        \"totalPages\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Company Detail",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9002/master/:idCompany/:idDepart/:idDivision",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"master",
+						":idCompany",
+						":idDepart",
+						":idDivision"
+					],
+					"variable": [
+						{
+							"key": "idCompany",
+							"value": "2"
+						},
+						{
+							"key": "idDepart",
+							"value": "2"
+						},
+						{
+							"key": "idDivision",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9002/master/:idCompany/:idDepart/:idDivision",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"master",
+								":idCompany",
+								":idDepart",
+								":idDivision"
+							],
+							"variable": [
+								{
+									"key": "idCompany",
+									"value": "2"
+								},
+								{
+									"key": "idDepart",
+									"value": "2"
+								},
+								{
+									"key": "idDivision",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "c0990c1a-9673-404b-badc-04b4f1e0cbc7"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:24:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "809"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:24:12.7109983+07:00\",\n    \"data\": [\n        {\n            \"idCompany\": 2,\n            \"nameCompany\": \"PT Indodev Niaga Internet\",\n            \"isActive\": 1,\n            \"address\": \"Jl. Tegal Rotan Raya No.78, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15413\",\n            \"Department\": [\n                {\n                    \"idDepartment\": 2,\n                    \"idCompany\": 2,\n                    \"nameDepartment\": \"Information Technology\",\n                    \"isActive\": 1,\n                    \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"Division\": [\n                        {\n                            \"id_division\": 2,\n                            \"idDepartment\": 2,\n                            \"nameDivision\": \"Tech Development\",\n                            \"isActive\": 1,\n                            \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"Employee\": [\n                                {\n                                    \"idDepartment\": 1,\n                                    \"id_division\": 2,\n                                    \"nameEmployee\": \"OVIEK SHAGYA\",\n                                    \"nPK\": \"2003.001\",\n                                    \"isActive\": 1,\n                                    \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                                    \"updatedAt\": \"2024-11-01T17:09:28+07:00\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Update",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nameCompany\":\"PT MANJURs 1\",\r\n    \"address\":\"Jln Gunung Sahari\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/master/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"master",
+						"company"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Update",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nameCompany\":\"PT MANJUSS 1\",\r\n    \"address\":\"Jln Gunung Sahari\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9002/master/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"master",
+								"company"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "967cb0c8-da3d-4368-91da-9f5b2e669e3b"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:39:06 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "138"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:39:06.0377976+07:00\",\n    \"data\": {\n        \"craeted\": false,\n        \"types\": \"Company\",\n        \"updated\": true\n    }\n}"
+				},
+				{
+					"name": "Response Create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nameCompany\":\"PT MANJURs 1\",\r\n    \"address\":\"Jln Gunung Sahari\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9002/master/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"master",
+								"company"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "8ee0c835-1478-4e05-b186-a82fdd882490"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:40:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "138"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:40:21.3774415+07:00\",\n    \"data\": {\n        \"craeted\": true,\n        \"types\": \"Company\",\n        \"updated\": false\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/master/company?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"master",
+						"company"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9002/master/company?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"master",
+								"company"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "2677ec8f-e971-434d-9bfc-6af24b185bd7"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:50:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "120"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:50:58.634536+07:00\",\n    \"data\": {\n        \"delete\": true,\n        \"types\": \"Company\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Collapse Company",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9002/master/inher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"master",
+						"inher"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9002/master/inher",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"master",
+								"inher"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ca38f101-220f-424c-9f98-142d14684054"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:22:44 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1519"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:22:44.3723643+07:00\",\n    \"data\": [\n        {\n            \"idCompany\": 2,\n            \"nameCompany\": \"PT Indodev Niaga Internet\",\n            \"isActive\": 1,\n            \"address\": \"Jl. Tegal Rotan Raya No.78, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15413\",\n            \"Department\": [\n                {\n                    \"idDepartment\": 1,\n                    \"idCompany\": 2,\n                    \"nameDepartment\": \"Board Of Directors\",\n                    \"isActive\": 1,\n                    \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"Division\": []\n                },\n                {\n                    \"idDepartment\": 2,\n                    \"idCompany\": 2,\n                    \"nameDepartment\": \"Information Technology\",\n                    \"isActive\": 1,\n                    \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                    \"Division\": [\n                        {\n                            \"id_division\": 1,\n                            \"idDepartment\": 2,\n                            \"nameDivision\": \"ERP Development\",\n                            \"isActive\": 1,\n                            \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"Employee\": []\n                        },\n                        {\n                            \"id_division\": 2,\n                            \"idDepartment\": 2,\n                            \"nameDivision\": \"Tech Development\",\n                            \"isActive\": 1,\n                            \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"Employee\": [\n                                {\n                                    \"idDepartment\": 1,\n                                    \"id_division\": 2,\n                                    \"nameEmployee\": \"OVIEK SHAGYA\",\n                                    \"nPK\": \"2003.001\",\n                                    \"isActive\": 1,\n                                    \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                                    \"updatedAt\": \"2024-11-01T17:09:28+07:00\"\n                                }\n                            ]\n                        },\n                        {\n                            \"id_division\": 3,\n                            \"idDepartment\": 2,\n                            \"nameDivision\": \"Software Maintenance\",\n                            \"isActive\": 1,\n                            \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"Employee\": []\n                        },\n                        {\n                            \"id_division\": 4,\n                            \"idDepartment\": 2,\n                            \"nameDivision\": \"Quality Assurance\",\n                            \"isActive\": 1,\n                            \"createdAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"updatedAt\": \"2024-11-01T17:09:28+07:00\",\n                            \"Employee\": []\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Collapse Company [Access Auth]",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					},
+					{
+						"key": "x-access",
+						"value": "0c1a522a308b40b3a82415b6305087cc20241101185540",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9002/acc/inher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"acc",
+						"inher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Access",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "DDADA",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "auth12321321",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-key",
+						"value": "1232312SDADN22SSD22",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9002/generate/accessCode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"generate",
+						"accessCode"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-key",
+								"value": "1232312SDADN22SSD22",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9002/generate/accessCode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9002",
+							"path": [
+								"generate",
+								"accessCode"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, x-key, x-signature, x-timestamp, x-access, x-key"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, OPTIONS, GET"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "c600ee92-d063-4e8e-ba34-c9f68dfe84c8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2024 11:53:27 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "136"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"Succes\",\n    \"timeStamps\": \"2024-11-01T18:53:27.0001021+07:00\",\n    \"data\": \"5115d11c1b1e4d61bae95c53fbf24e5b20241101185327\"\n}"
+				}
+			]
+		}
+	]
+}
