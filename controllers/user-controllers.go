@@ -6,6 +6,7 @@ import (
 	"dataons-service/repositories"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 )
 
 var UserController = &userController{}
@@ -49,6 +50,20 @@ func (u *userController) CreateUpdateCompany(c *gin.Context) {
 	}
 
 	result, err := repositories.StaticUserRepo(c).CreateUpdateCompany(input, c)
+	if err != nil {
+		app.Response(http.StatusBadRequest, "", "cannot generate access", nil)
+		return
+	}
+
+	app.Response(http.StatusOK, "Succes", "", result)
+	return
+}
+
+func (u *userController) DeleteCompany(c *gin.Context) {
+	app := response.Gin{C: c}
+
+	id, _ := strconv.Atoi(c.Query("id"))
+	result, err := repositories.StaticUserRepo(c).DeleteCompany(id, c)
 	if err != nil {
 		app.Response(http.StatusBadRequest, "", "cannot generate access", nil)
 		return

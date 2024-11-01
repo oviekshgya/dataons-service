@@ -139,3 +139,16 @@ func (service UserRepository) CreateUpdateCompany(input models.JSONCreateUpdate,
 		"types":   "Company",
 	}, nil
 }
+
+func (service UserRepository) DeleteCompany(id int, c *gin.Context) (interface{}, error) {
+
+	tx := service.Mysql.Begin()
+	tx.Delete(&company.Company{}, id)
+	tx.Commit()
+
+	return map[string]interface{}{
+		"craeted": true,
+		"updated": false,
+		"types":   "Company",
+	}, nil
+}
