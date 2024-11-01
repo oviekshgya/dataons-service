@@ -2,7 +2,9 @@ package repositories
 
 import (
 	"dataons-service/models"
+	"dataons-service/models/company"
 	"dataons-service/models/queryScopes"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"strconv"
@@ -18,10 +20,32 @@ func StaticUserRepo(c *gin.Context) *UserRepository {
 	}
 }
 
+func DetailCompany(idCompany, idDepartment, idDivision int, db *gorm.DB) (interface{}, bool) {
+	var masterCom []company.MasterCompany
+	fmt.Println("id", idCompany, idDivision, idDivision)
+	if idCompany != 0 && idDepartment == 0 && idDivision == 0 {
+		db.Preload("Department").Preload("Department.Division").Where("idCompany = ?", idCompany).Find(&masterCom)
+	} else if idCompany != 0 && idDepartment != 0 && idDivision == 0 {
+		db.Preload("Department").Preload("Department", "idDepartment", idDepartment).Preload("Department.Division").Find(&masterCom)
+	} else if idCompany != 0 && idDepartment != 0 && idDivision != 0 {
+		db.Preload("Department", "idDepartment", idDepartment).Preload("Department.Division", "idDivision", idDivision).Preload("Department.Division.Employee").Find(&masterCom)
+	}
+
+	return masterCom, true
+}
+
 func (service UserRepository) MasterDataCompany(c *gin.Context) (interface{}, error) {
 
 	page, _ := strconv.Atoi(c.Query("page"))
 	pageSize, _ := strconv.Atoi(c.Query("pageSize"))
+	idCompany, _ := strconv.Atoi(c.Param("idCompany"))
+	idDepartment, _ := strconv.Atoi(c.Param("idDepart"))
+	idDivision, _ := strconv.Atoi(c.Param("idDivision"))
+
+	if result, is := DetailCompany(idCompany, idDepartment, idDivision, service.Mysql); is {
+		return result, nil
+	}
+
 	var totalData int64
 	var data []models.MasterData
 	var totalPage int
@@ -35,7 +59,7 @@ func (service UserRepository) MasterDataCompany(c *gin.Context) (interface{}, er
 
 	service.Mysql.Scopes(models.Paginate(pageSize, page), queryScopes.JOINMasterData(), queryScopes.SELECTMasterData()).Find(&data)
 
-	service.Mysql.Scopes(queryScopes.JOINMasterData(), queryScopes.SELECTMasterData()).Count(&totalData)
+	service.Mysql.Scopes(queryScopes.JOINMasterData()).Count(&totalData)
 
 	if int(totalData) < pageSize {
 		totalPage = 1
@@ -57,4 +81,12 @@ func (service UserRepository) MasterDataCompany(c *gin.Context) (interface{}, er
 		TotalData:  totalData,
 		TotalPages: int(totalData),
 	}, nil
+}
+
+func (service UserRepository) MasterCompanyInheritance(c *gin.Context) (interface{}, error) {
+
+	var masterCom []company.MasterCompany
+	service.Mysql.Preload("Department").Preload("Department.Division").Preload("Department.Division.Employee").Find(&masterCom)
+
+	return &masterCom, nil
 }

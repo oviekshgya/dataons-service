@@ -24,3 +24,16 @@ func (u *userController) MasterDataCompany(c *gin.Context) {
 	app.Response(http.StatusOK, "Succes", "", result)
 	return
 }
+
+func (u *userController) MasterCompanyInheritance(c *gin.Context) {
+	app := response.Gin{C: c}
+
+	result, err := repositories.StaticUserRepo(c).MasterCompanyInheritance(c)
+	if err != nil {
+		app.Response(http.StatusBadRequest, "", "cannot generate access", nil)
+		return
+	}
+
+	app.Response(http.StatusOK, "Succes", "", result)
+	return
+}

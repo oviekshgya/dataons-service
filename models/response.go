@@ -6,4 +6,5 @@ type Response struct {
 	Page       int         `json:"page"`
 	PageSize   int         `json:"pageSize"`
 	TotalPages int         `json:"totalPages"`
+	Any        interface{} `json:"any,omitempty"`
 }

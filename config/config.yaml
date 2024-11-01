@@ -1,6 +1,6 @@
 server:
   appName: "dataons-service"
-  port: "9001"
+  port: "9002"
   secret: "ASDasd324"
   mode: "release"
   env: "dev"

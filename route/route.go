@@ -18,7 +18,8 @@ func Routers(Routers *gin.Engine) {
 	master := Routers.Group("/master")
 	master.Use(middleware.AuthBasic())
 	{
-		master.GET("/", controllers.UserController.MasterDataCompany)
+		master.GET("/:idCompany/:idDepart/:idDivision", controllers.UserController.MasterDataCompany)
+		master.GET("/inher", controllers.UserController.MasterCompanyInheritance)
 	}
 
 }
