@@ -147,8 +147,7 @@ func (service UserRepository) DeleteCompany(id int, c *gin.Context) (interface{}
 	tx.Commit()
 
 	return map[string]interface{}{
-		"craeted": true,
-		"updated": false,
-		"types":   "Company",
+		"delete": true,
+		"types":  "Company",
 	}, nil
 }
